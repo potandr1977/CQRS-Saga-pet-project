@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Commands.Messages\MessageApprover.Saga.Messages.csproj" />
+    <ProjectReference Include="..\MessageApprover.Data.Elastic\MessageApprover.Data.Elastic.csproj" />
+    <ProjectReference Include="..\MessageApprover.Domain\MessageApprover.Domain.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic.Abstraction\MessageApprover.Queries.DataAccess.Elastic.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic\MessageApprover.Queries.DataAccess.Elastic.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Mongo.Abstractions\MessageApprover.Queries.DataAccess.Mongo.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Mongo\MessageApprover.Queries.DataAccess.Mongo.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries\MessageApprover.Queries.csproj" />
+  </ItemGroup>
+
+</Project>

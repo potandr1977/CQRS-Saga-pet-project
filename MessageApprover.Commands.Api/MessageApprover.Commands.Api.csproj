@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>7c6d8b8f-d8ab-407d-9576-5e3ab681b0f0</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.1" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.2.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Commands.Abstractions\MessageApprover.Commands.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.DataAccess.Mongo.Abstractions\MessageApprover.Commands.DataAccess.Mongo.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.DataAccess.Mongo\MessageApprover.Commands.DataAccess.Mongo.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.Messages\MessageApprover.Saga.Messages.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.Services.Abstractions\MessageApprover.Commands.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.Services\MessageApprover.Commands.Services.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands\MessageApprover.Commands.csproj" />
+    <ProjectReference Include="..\MessageApprover.Domain\MessageApprover.Domain.csproj" />
+    <ProjectReference Include="..\MessageApprover.Settings\MessageApprover.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

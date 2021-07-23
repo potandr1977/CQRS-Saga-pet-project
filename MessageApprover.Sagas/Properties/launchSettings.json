@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MessageApprover.Sagas": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

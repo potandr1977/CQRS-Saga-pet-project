@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Commands.Messages\MessageApprover.Saga.Messages.csproj" />
+    <ProjectReference Include="..\MessageApprover.Projections.ElasticSearch\MessageApprover.Projections.ElasticSearch.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic.Abstraction\MessageApprover.Queries.DataAccess.Elastic.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic\MessageApprover.Queries.DataAccess.Elastic.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Mongo.Abstractions\MessageApprover.Queries.DataAccess.Mongo.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Mongo\MessageApprover.Queries.DataAccess.Mongo.csproj" />
+    <ProjectReference Include="..\MessageApprover.Settings\MessageApprover.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

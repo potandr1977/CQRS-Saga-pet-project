@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>2d35e167-d3a1-4f59-a847-0328b7201518</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic.Abstraction\MessageApprover.Queries.DataAccess.Elastic.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic\MessageApprover.Queries.DataAccess.Elastic.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.Services.Abstractions\MessageApprover.Queries.Services.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries.Services\MessageApprover.Queries.Services.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries\MessageApprover.Queries.csproj" />
+    <ProjectReference Include="..\MessageApprover.Settings\MessageApprover.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

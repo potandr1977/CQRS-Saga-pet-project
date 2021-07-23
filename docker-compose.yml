@@ -1,0 +1,71 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.3-management
+    ports:
+      - "5679:5672"
+      - "15679:15672"
+    container_name: messageapprover_rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27019:27017
+    container_name: messageapprover_mongodb
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=madb
+    networks:
+      - mynetwork
+
+  elasticsearch:
+    image: 'elasticsearch:6.6.0'
+    ports:
+      - 9209:9200
+      - 9309:9300
+    container_name: messageapprover_elastic
+    restart: always
+    environment:
+      - discovery.type=single-node
+    networks:
+      - mynetwork
+
+  messageapprover.commands.api:
+    image: ${DOCKER_REGISTRY-}messageapprovercommandsapi
+    build:
+      context: .
+      dockerfile: MessageApprover.Commands.Api/Dockerfile
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - mynetwork
+
+  messageapprover.queries.api:
+    image: ${DOCKER_REGISTRY-}messageapproverqueriesapi
+    build:
+      context: .
+      dockerfile: MessageApprover.Queries.Api/Dockerfile
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - mynetwork
+
+  messageapprover.sagas:
+    image: ${DOCKER_REGISTRY-}messageapproversagas
+    build:
+      context: .
+      dockerfile: MessageApprover.Sagas/Dockerfile
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+     driver: bridge

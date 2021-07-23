@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NEST" Version="7.13.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Queries.DataAccess.Elastic.Abstraction\MessageApprover.Queries.DataAccess.Elastic.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries\MessageApprover.Queries.csproj" />
+    <ProjectReference Include="..\MessageApprover.Settings\MessageApprover.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

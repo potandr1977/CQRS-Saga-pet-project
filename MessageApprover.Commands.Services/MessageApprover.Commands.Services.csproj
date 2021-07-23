@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Commands.DataAccess.Mongo.Abstractions\MessageApprover.Commands.DataAccess.Mongo.Abstractions.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.Messages\MessageApprover.Saga.Messages.csproj" />
+    <ProjectReference Include="..\MessageApprover.Commands.Services.Abstractions\MessageApprover.Commands.Services.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

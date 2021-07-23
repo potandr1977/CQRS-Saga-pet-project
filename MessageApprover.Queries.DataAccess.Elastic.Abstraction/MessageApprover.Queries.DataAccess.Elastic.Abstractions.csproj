@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MessageApprover.Queries.DataAccess.Elastic.Abstraction</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageApprover.Data.Elastic\MessageApprover.Data.Elastic.csproj" />
+    <ProjectReference Include="..\MessageApprover.Queries\MessageApprover.Queries.csproj" />
+  </ItemGroup>
+
+</Project>
