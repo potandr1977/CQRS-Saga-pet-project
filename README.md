@@ -12,3 +12,6 @@ The legend of this project is simple: Author writes a message (saga starts at th
 
 Messages passes throuhg commands api, approved messages saves into mongodb, and after that projector makes projection to ElasticSearch where data saves denormalized.
 User can watch messages throuhg query api from elasticSearch database.
+
+![CQRS-Sample](https://user-images.githubusercontent.com/50134408/126861375-6285a227-8169-4feb-8ad8-00ed4e3276bf.jpg)
+
