@@ -15,3 +15,4 @@ User can watch messages throuhg query api from elasticSearch database.
 
 ![CQRS-Sample](https://user-images.githubusercontent.com/50134408/126861375-6285a227-8169-4feb-8ad8-00ed4e3276bf.jpg)
 
+![CQRSsampleWReplica](https://user-images.githubusercontent.com/50134408/126861696-6d0a7154-970c-4b0a-96e5-ebc69351a953.jpg)
