@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MessageApprover.Consumers
 {
 
-    public class WaitForApproveConsumer : IConsumer<WaitForApproveCommand>
+    public class WaitForApproveConsumer : IConsumer<WaitingForApproveStarted>
     {
         readonly ICommandDispatcher commandDispatcher;
 
@@ -17,7 +17,7 @@ namespace MessageApprover.Consumers
             commandDispatcher = services.BuildServiceProvider().GetService<ICommandDispatcher>();
         }
 
-        public async Task Consume(ConsumeContext<WaitForApproveCommand> context)
+        public async Task Consume(ConsumeContext<WaitingForApproveStarted> context)
         {
             //тут организуем процесс предоставления значения на утверждение специалистом, 
             //например складываем введённое значение в отдельную БД или отсылаем в другой микросервис

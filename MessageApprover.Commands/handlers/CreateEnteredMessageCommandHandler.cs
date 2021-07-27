@@ -25,12 +25,24 @@ namespace MessageApprover.Commands.handlers
 
         private async Task SendSagaCommand(CreateEnteredMessageCommand command)
         {
+            /*
+            var sendToUri = new Uri($"{RabbitSettings.RabbitMqUri}{RabbitSettings.SagaQueue}:{nameof(IStartApprovementCommand)}");
+            var endPoint = await busControl.GetSendEndpoint(sendToUri);
+            await endPoint.Send<IStartApprovementCommand>(new
+            {
+                Id = command.Id,
+                AuthorId = command.AuthorId,
+                Text = command.Text
+            });
+            */
+            
             await busControl.Publish<IStartApprovementCommand>(new
             {
                 Id = command.Id,
                 AuthorId = command.AuthorId,
                 Text = command.Text
             });
+            
         }
     }
 }
