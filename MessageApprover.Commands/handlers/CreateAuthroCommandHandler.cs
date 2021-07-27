@@ -4,6 +4,7 @@ using MessageApprover.Commands.Mappers;
 using System.Threading;
 using System.Threading.Tasks;
 using MessageApprover.Commands.Services.Abstractions;
+// ReSharper disable All
 
 namespace MessageApprover.Commands.handlers
 {

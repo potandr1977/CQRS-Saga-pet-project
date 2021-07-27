@@ -5,7 +5,7 @@ using MessageApprover.Saga.Messages.EnteredMessages;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 
-namespace MessageApprover.Consumers
+namespace MessageApprover.Commands.Api.Consumers
 {
 
     public class WaitForApproveConsumer : IConsumer<WaitingForApproveStarted>

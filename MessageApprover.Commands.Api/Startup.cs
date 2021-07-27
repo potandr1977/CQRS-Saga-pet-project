@@ -4,7 +4,7 @@ using MessageApprover.Commands.DataAccess.Abstractions;
 using MessageApprover.Commands.infrastructure;
 using MessageApprover.Commands.Services;
 using MessageApprover.Commands.Services.Abstractions;
-using MessageApprover.Consumers;
+using MessageApprover.Commands.Api.Consumers;
 using MessageApprover.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
