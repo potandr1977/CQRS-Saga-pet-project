@@ -1,4 +1,5 @@
-﻿using MessageApprover.CommandsAbstractions.Author;
+﻿using MessageApprover.Commands.Abstractions.EnteredMessage;
+using MessageApprover.CommandsAbstractions.Author;
 using MessageApprover.Domain;
 
 namespace MessageApprover.Commands.Mappers

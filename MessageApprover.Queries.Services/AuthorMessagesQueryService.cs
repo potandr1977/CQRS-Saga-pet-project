@@ -16,7 +16,6 @@ namespace MessageApprover.Queries
 
         public Task<IReadOnlyCollection<GetAllMessages.ResultItem>> GetAllMessages(GetAllMessages query)
         {
-            
             return authorMessagesDao.GetAllMessages(query);
         }
 

@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using MessageApprover.Commands.Abstractions;
+using MessageApprover.Commands.Abstractions.EnteredMessage;
 using MessageApprover.CommandsAbstractions.Author;
 using MessageApprover.Saga.Messages.EnteredMessages;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace MessageApprover.Commands.Api.Consumers
 {
-
     public class WaitForApproveConsumer : IConsumer<WaitingForApproveStarted>
     {
         readonly ICommandDispatcher commandDispatcher;
@@ -19,10 +19,8 @@ namespace MessageApprover.Commands.Api.Consumers
 
         public async Task Consume(ConsumeContext<WaitingForApproveStarted> context)
         {
-            //тут организуем процесс предоставления значения на утверждение специалистом, 
-            //например складываем введённое значение в отдельную БД или отсылаем в другой микросервис
-            //в микросервисе куда мы отослали будет опубликовано либо сообщение MessageApproved или MessageDecliened
-            //для упрощения примера опубликуем ообщение в этом методе
+            //I wont to develop message approvement UI, that is why I'm going to save message text in mongoDB and 
+            //publish saga message 
             
             await commandDispatcher.Send(new MessageApprovedCommand
             {

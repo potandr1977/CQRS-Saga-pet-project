@@ -1,9 +1,9 @@
 ﻿using MessageApprover.Commands.Abstractions;
-using MessageApprover.CommandsAbstractions.Author;
 using MessageApprover.Commands.Mappers;
 using System.Threading;
 using System.Threading.Tasks;
 using MessageApprover.Commands.Services.Abstractions;
+using MessageApprover.Commands.Abstractions.EnteredMessage;
 
 namespace MessageApprover.Commands.handlers
 {

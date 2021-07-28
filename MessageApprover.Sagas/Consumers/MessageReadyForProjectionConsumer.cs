@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MessageApprover.Consumers
 {
-
     public class MessageReadyForProjectionConsumer : IConsumer<IMessageReadyForProjection>
     {
         readonly IAuthorMessagesProjector authorMessageProjector;

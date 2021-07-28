@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 
 namespace MessageApprover.Consumers
 {
-
     public class MessageDeclinedConsumer : IConsumer<IMessageDeclined>
     {
         public Task Consume(ConsumeContext<IMessageDeclined> context)

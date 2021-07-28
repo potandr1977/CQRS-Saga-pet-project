@@ -1,5 +1,5 @@
 ﻿using MessageApprover.Commands.Abstractions;
-using MessageApprover.CommandsAbstractions.Author;
+using MessageApprover.Commands.Abstractions.EnteredMessage;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

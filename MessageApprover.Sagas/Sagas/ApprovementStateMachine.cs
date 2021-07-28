@@ -8,13 +8,18 @@ namespace MessageApprover.Sagas
     public class ApprovementStateMachine : MassTransitStateMachine<ApprovementState>
     {
         public State MessageWaitsForApproveState { get; private set; }
+
         public State MessageApprovedState { get; private set; }
+
         public State MessageDeclinedState { get; private set; }
-        
+
 
         public Event<IStartApprovementCommand> StartApprovementCommand { get; set; }
+
         public Event<IMessageWaitsForApprove> MessageWaitsForApproveEvent { get; set; }
+
         public Event<IMessageApproved> MessageApprovedEvent { get; set; }
+
         public Event<IMessageDeclined> MessageDeclinedEvent { get; set; }
 
         public ApprovementStateMachine()

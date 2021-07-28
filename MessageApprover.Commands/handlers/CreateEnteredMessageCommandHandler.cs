@@ -1,11 +1,9 @@
 ﻿using MessageApprover.Commands.Abstractions;
-using MessageApprover.CommandsAbstractions.Author;
 using System.Threading;
 using System.Threading.Tasks;
 using MassTransit;
 using MessageApprover.Saga.Messages.EnteredMessages;
-using System;
-using MessageApprover.Settings;
+using MessageApprover.Commands.Abstractions.EnteredMessage;
 
 namespace MessageApprover.Commands.handlers
 {
