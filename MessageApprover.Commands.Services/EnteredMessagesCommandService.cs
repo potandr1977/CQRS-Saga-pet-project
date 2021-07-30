@@ -9,8 +9,8 @@ namespace MessageApprover.Commands.Services
 {
     public class EnteredMessagesCommandService : IEnteredMessagesCommandService
     {
-        readonly IEnteredMessageDao enteredMessageDao;
-        readonly IBusControl busControl;
+        private readonly IEnteredMessageDao enteredMessageDao;
+        private readonly IBusControl busControl;
 
         public EnteredMessagesCommandService(IEnteredMessageDao enteredMessageDao, IBusControl busControl)
         {

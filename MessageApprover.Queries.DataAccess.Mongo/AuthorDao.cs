@@ -1,7 +1,6 @@
 ﻿using MessageApprover.Domain;
 using MessageApprover.Queries.DataAccess.Mongo.Abstractions;
 using MessageApprover.Settings;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace MessageApprover.Queries.DataAccess.Mongo
 {
     public class AuthorDao : IAuthorDao
     {
-        readonly IMongoDatabase database;
+        private readonly IMongoDatabase database;
 
         public AuthorDao()
         {

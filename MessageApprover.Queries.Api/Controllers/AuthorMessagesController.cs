@@ -13,7 +13,7 @@ namespace MessageApprover.Queries.Api.Controllers
     [ApiController]
     public class AuthorMessagesController : ControllerBase
     {
-        readonly IAuthorMessagesQueryService authorMessagesQueryService;
+        private readonly IAuthorMessagesQueryService authorMessagesQueryService;
 
         public AuthorMessagesController(IAuthorMessagesQueryService authorMessagesQueryService)
         {

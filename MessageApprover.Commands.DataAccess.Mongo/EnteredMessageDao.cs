@@ -11,7 +11,7 @@ namespace MessageApprover.Commands.DataAccess
 {
     public class EnteredMessageDao : IEnteredMessageDao
     {
-        readonly IMongoDatabase database;
+        private readonly IMongoDatabase database;
 
         public EnteredMessageDao()
         {

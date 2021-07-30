@@ -10,7 +10,7 @@ namespace MessageApprover.Queries.DataAccess.Elastic
 {
     public class AuthorMessagesDao : IAuthorMessagesDao
     {
-        readonly ElasticClient elasticClient;
+        private readonly ElasticClient elasticClient;
 
         public AuthorMessagesDao()
         {

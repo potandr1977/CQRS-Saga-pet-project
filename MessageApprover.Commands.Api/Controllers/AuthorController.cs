@@ -12,7 +12,7 @@ namespace MessageApprover.Commands.Api.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        readonly ICommandDispatcher commandDispatcher;
+        private readonly ICommandDispatcher commandDispatcher;
 
         public AuthorController(ICommandDispatcher commandDispatcher)
         {

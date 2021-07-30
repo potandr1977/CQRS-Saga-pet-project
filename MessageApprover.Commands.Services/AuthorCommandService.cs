@@ -7,7 +7,7 @@ namespace MessageApprover.Commands.Services
 {
     public class AuthorCommandService : IAuthorCommandService
     {
-        readonly IAuthorDao authorDao;
+        private readonly IAuthorDao authorDao;
 
         public AuthorCommandService(IAuthorDao authorDao)
         {

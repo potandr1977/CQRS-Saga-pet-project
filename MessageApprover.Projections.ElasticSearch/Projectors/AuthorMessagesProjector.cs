@@ -8,8 +8,8 @@ namespace MessageApprover.Projections.ElasticSearch
 {
     public class AuthorMessagesProjector : IAuthorMessagesProjector
     {
-        readonly IAuthorDao authorDao;
-        readonly IAuthorMessagesDao authorMessagesDao;
+        private readonly IAuthorDao authorDao;
+        private readonly IAuthorMessagesDao authorMessagesDao;
 
         public AuthorMessagesProjector(IAuthorMessagesDao authorMessagesDao, IAuthorDao authorDao)
         {

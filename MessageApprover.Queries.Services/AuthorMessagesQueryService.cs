@@ -7,7 +7,7 @@ namespace MessageApprover.Queries
 {
     public class AuthorMessagesQueryService : IAuthorMessagesQueryService
     {
-        readonly IAuthorMessagesDao authorMessagesDao;
+        private readonly IAuthorMessagesDao authorMessagesDao;
 
         public AuthorMessagesQueryService (IAuthorMessagesDao authorMessagesDao)
         {

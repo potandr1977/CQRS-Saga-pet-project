@@ -12,7 +12,7 @@ namespace MessageApprover.Commands.DataAccess
 {
     public class AuthorDao : IAuthorDao
     {
-        readonly IMongoDatabase database;
+        private readonly IMongoDatabase database;
 
         public AuthorDao()
         {

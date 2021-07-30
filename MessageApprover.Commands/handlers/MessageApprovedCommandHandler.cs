@@ -9,7 +9,7 @@ namespace MessageApprover.Commands.handlers
 {
     public class MessageApprovedCommandHandler : ICommandHandler<MessageApprovedCommand>
     {
-        readonly IEnteredMessagesCommandService enteredMessagesCommandService;
+        private readonly IEnteredMessagesCommandService enteredMessagesCommandService;
 
         public MessageApprovedCommandHandler(IEnteredMessagesCommandService enteredMessagesCommandService)
         {

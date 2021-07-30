@@ -9,7 +9,7 @@ namespace MessageApprover.Commands.handlers
 {
     public class CreateEnteredMessageCommandHandler : ICommandHandler<CreateEnteredMessageCommand>
     {
-        readonly IBusControl busControl;
+        private readonly IBusControl busControl;
 
         public CreateEnteredMessageCommandHandler(IBusControl busControl)
         {

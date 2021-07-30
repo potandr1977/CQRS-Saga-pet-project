@@ -10,7 +10,7 @@ namespace MessageApprover.Commands.handlers
 {
     public class CreateAuthroCommandHandler : ICommandHandler<CreateAuthorCommand>
     {
-        readonly IAuthorCommandService authorCommandService;
+        private readonly IAuthorCommandService authorCommandService;
 
         public CreateAuthroCommandHandler(IAuthorCommandService authorCommandService)
         {

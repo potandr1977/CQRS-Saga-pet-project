@@ -1,7 +1,6 @@
 ﻿using MassTransit;
 using MessageApprover.Commands.Abstractions;
 using MessageApprover.Commands.Abstractions.EnteredMessage;
-using MessageApprover.CommandsAbstractions.Author;
 using MessageApprover.Saga.Messages.EnteredMessages;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace MessageApprover.Commands.Api.Consumers
 {
     public class WaitForApproveConsumer : IConsumer<WaitingForApproveStarted>
     {
-        readonly ICommandDispatcher commandDispatcher;
+        private readonly ICommandDispatcher commandDispatcher;
 
         public WaitForApproveConsumer(IServiceCollection services)
         {

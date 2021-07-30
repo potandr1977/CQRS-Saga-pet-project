@@ -8,7 +8,7 @@ namespace MessageApprover.Consumers
 {
     public class MessageReadyForProjectionConsumer : IConsumer<IMessageReadyForProjection>
     {
-        readonly IAuthorMessagesProjector authorMessageProjector;
+        private readonly IAuthorMessagesProjector authorMessageProjector;
 
         public MessageReadyForProjectionConsumer(IServiceCollection services)
         {
