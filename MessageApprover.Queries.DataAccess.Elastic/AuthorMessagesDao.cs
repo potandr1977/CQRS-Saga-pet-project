@@ -10,13 +10,11 @@ namespace MessageApprover.Queries.DataAccess.Elastic
 {
     public class AuthorMessagesDao : IAuthorMessagesDao
     {
-        private readonly ElasticClient elasticClient;
+        private readonly IElasticClient elasticClient;
 
-        public AuthorMessagesDao()
+        public AuthorMessagesDao(IElasticClient elasticClient)
         {
-            var settings = new ConnectionSettings(new Uri(ElasticSettings.Url)).DefaultIndex(ElasticSettings.DefaultIndexName);
-
-            elasticClient = new ElasticClient(settings);
+            this.elasticClient = elasticClient;
         }
 
         public Task Save(AuthorMessage authorMessage)

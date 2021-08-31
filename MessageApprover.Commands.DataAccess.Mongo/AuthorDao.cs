@@ -14,10 +14,9 @@ namespace MessageApprover.Commands.DataAccess
     {
         private readonly IMongoDatabase database;
 
-        public AuthorDao()
+        public AuthorDao(IMongoClient mongoClient)
         {
-            var client = new MongoClient(MongoSettings.ConnectionString);
-            database = client.GetDatabase(MongoSettings.DbName);
+            database = mongoClient.GetDatabase(MongoSettings.DbName);
         }
 
         private IMongoCollection<Author> Authors => database.GetCollection<Author>(MongoSettings.AuthorsCollectionName);

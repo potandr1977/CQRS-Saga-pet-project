@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using MongoDB.Driver;
+using Nest;
 
 namespace MessageApprover.Sagas
 {
@@ -19,6 +21,14 @@ namespace MessageApprover.Sagas
         public static async Task Main(string[] args)
         {
             var services = new ServiceCollection()
+            .AddSingleton<IMongoClient>(s =>
+                    new MongoClient(MongoSettings.ConnectionString))
+            .AddSingleton<IElasticClient>(s =>
+            {
+                var settings = new ConnectionSettings(new Uri(ElasticSettings.Url)).DefaultIndex(ElasticSettings.DefaultIndexName);
+
+                return new ElasticClient(settings);
+            })
             .AddSingleton<IAuthorDao, AuthorDao>()
             .AddSingleton<IAuthorMessagesDao, AuthorMessagesDao>()
             .AddSingleton<IAuthorMessagesProjector, AuthorMessagesProjector>();

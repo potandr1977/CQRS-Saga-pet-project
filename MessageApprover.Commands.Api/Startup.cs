@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 
 namespace MessageApprover.Commands.Api
 {
@@ -51,6 +52,10 @@ namespace MessageApprover.Commands.Api
 
             services.AddHostedService<MassTransitConsoleHostedService>();
 
+            services.AddSingleton<IMongoClient>(s => 
+                new MongoClient(Settings.MongoSettings.ConnectionString)
+            );
+            
             services.AddSingleton<IAuthorDao, AuthorDao>();
             services.AddSingleton<IEnteredMessageDao, EnteredMessageDao>();
             services.AddSingleton<IAuthorCommandService, AuthorCommandService>();

@@ -13,10 +13,9 @@ namespace MessageApprover.Commands.DataAccess
     {
         private readonly IMongoDatabase database;
 
-        public EnteredMessageDao()
+        public EnteredMessageDao(IMongoClient mongoClient)
         {
-            var client = new MongoClient(MongoSettings.ConnectionString);
-            database = client.GetDatabase(MongoSettings.DbName);
+            database = mongoClient.GetDatabase(MongoSettings.DbName);
         }
 
         private IMongoCollection<EnteredMessage> EnteredMessages => database.GetCollection<EnteredMessage>(MongoSettings.EnteredMessagesCollectionName);
