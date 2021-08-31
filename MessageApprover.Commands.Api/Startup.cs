@@ -53,7 +53,7 @@ namespace MessageApprover.Commands.Api
             services.AddHostedService<MassTransitConsoleHostedService>();
 
             services.AddSingleton<IMongoClient>(s => 
-                new MongoClient(Settings.MongoSettings.ConnectionString)
+                new MongoClient(MongoSettings.ConnectionString)
             );
             
             services.AddSingleton<IAuthorDao, AuthorDao>();

@@ -14,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MessageApprover.Settings;
+using Nest;
 
 namespace MessageApprover.Queries.Api
 {
@@ -29,6 +31,13 @@ namespace MessageApprover.Queries.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IElasticClient>(s =>
+            {
+                var settings =
+                    new ConnectionSettings(new Uri(ElasticSettings.Url)).DefaultIndex(ElasticSettings.DefaultIndexName);
+
+                return new ElasticClient(settings);
+            });
             services.AddSingleton<IAuthorMessagesDao, AuthorMessagesDao>();
             services.AddSingleton<IAuthorMessagesQueryService, AuthorMessagesQueryService>();
 
