@@ -4,7 +4,7 @@ CQRS + Saga test project
 
 Легенда проста: Сообщение поступает от автора (при этом стартует сага), сообщение одобряется, после этого сохраняется в монгу.
 
-Сообщения поступают через CommandsApi после подтверждения сообщения проецирются в ElasticSearch в денормализованном виде, после чего пользователь может их посмотреть через QueriesApi. (mongo и эласти в этом проекте в минимальном виде)
+Сообщения поступают через CommandsApi после подтверждения сообщения проецирются в ElasticSearch в денормализованном виде, после чего пользователь может их посмотреть через QueriesApi. (mongo и эластик в этом проекте в минимальном виде)
 
 The main purpose is: create CQRS application, where queries part could be placed on several replics separately from commands part.
 
