@@ -42,7 +42,7 @@ namespace MessageApprover.Queries.DataAccess.Elastic
 
         public async Task<IReadOnlyCollection<GetAllMessages.ResultItem>> GetAllMessages(GetAllMessages query)
         {
-            //return all messages for this moment, autocompletion search will be added later
+            //return all messages for this moment, autocompeletion search will be added later
 
             var resp = await elasticClient.SearchAsync<GetAllMessages.ResultItem>(s => s
                 .From(0)

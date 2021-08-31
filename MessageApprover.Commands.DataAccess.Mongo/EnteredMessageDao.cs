@@ -15,16 +15,11 @@ namespace MessageApprover.Commands.DataAccess
 
         public EnteredMessageDao()
         {
-            MongoClient client = new MongoClient(MongoSettings.ConnectionString);
+            var client = new MongoClient(MongoSettings.ConnectionString);
             database = client.GetDatabase(MongoSettings.DbName);
         }
 
-        private IMongoCollection<EnteredMessage> EnteredMessages
-        {
-            get { 
-                return database.GetCollection<EnteredMessage>(MongoSettings.EnteredMessagesCollectionName); 
-            }
-        }
+        private IMongoCollection<EnteredMessage> EnteredMessages => database.GetCollection<EnteredMessage>(MongoSettings.EnteredMessagesCollectionName);
 
         public async Task<IReadOnlyList<EnteredMessage>> GetAll()
         {
@@ -34,7 +29,7 @@ namespace MessageApprover.Commands.DataAccess
             return await EnteredMessages.Find(filter).ToListAsync();
         }
 
-        public async Task<IReadOnlyList<EnteredMessage>> GetByAutorId(Guid authorId)
+        public async Task<IReadOnlyList<EnteredMessage>> GetByAuthorId(Guid authorId)
         {
             var builder = new FilterDefinitionBuilder<EnteredMessage>();
             var filter = builder.Empty;

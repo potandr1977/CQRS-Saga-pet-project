@@ -13,17 +13,11 @@ namespace MessageApprover.Queries.DataAccess.Mongo
 
         public AuthorDao()
         {
-            MongoClient client = new MongoClient(MongoSettings.ConnectionString);
+            var client = new MongoClient(MongoSettings.ConnectionString);
             database = client.GetDatabase(MongoSettings.DbName);
         }
 
-        private IMongoCollection<Author> Authors
-        {
-            get
-            {
-                return database.GetCollection<Author>(MongoSettings.AuthorsCollectionName);
-            }
-        }
+        private IMongoCollection<Author> Authors => database.GetCollection<Author>(MongoSettings.AuthorsCollectionName);
 
         public Task<Author> GetAuthorById(Guid authorId)
         {

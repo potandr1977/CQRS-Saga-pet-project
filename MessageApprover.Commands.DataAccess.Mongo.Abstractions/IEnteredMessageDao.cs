@@ -9,7 +9,7 @@ namespace MessageApprover.Commands.DataAccess.Abstractions
     {
         Task<IReadOnlyList<EnteredMessage>> GetAll();
 
-        Task<IReadOnlyList<EnteredMessage>> GetByAutorId(Guid authorId);
+        Task<IReadOnlyList<EnteredMessage>> GetByAuthorId(Guid authorId);
 
         Task<EnteredMessage> GetById(Guid id);
 
