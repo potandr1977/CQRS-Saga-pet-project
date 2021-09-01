@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageApprover.Sagas", "Me
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageApprover.Settings", "MessageApprover.Settings\MessageApprover.Settings.csproj", "{CD0CC0BB-9AB7-43B9-8602-53ECB8AF9142}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commans", "Commans", "{E04BBACB-893C-43DF-B19D-056CDB803E99}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commands", "Commands", "{E04BBACB-893C-43DF-B19D-056CDB803E99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{C814C274-2336-484D-A8C3-AE285306820A}"
 EndProject
