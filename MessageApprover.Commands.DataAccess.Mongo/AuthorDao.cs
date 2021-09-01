@@ -21,22 +21,22 @@ namespace MessageApprover.Commands.DataAccess
 
         private IMongoCollection<Author> Authors => database.GetCollection<Author>(MongoSettings.AuthorsCollectionName);
 
-        public async Task Save(Author author)
+        public Task Save(Author author)
         {
-            await Authors.InsertOneAsync(author);
+            return Authors.InsertOneAsync(author);
         }
 
-        public async Task<IReadOnlyList<Author>> GetAll()
+        public Task<List<Author>> GetAll()
         {
             var builder = new FilterDefinitionBuilder<Author>();
-            var filter = builder.Empty; 
+            var filter = builder.Empty;
 
-            return await Authors.Find(filter).ToListAsync();
+            return Authors.Find(filter).ToListAsync();
         }
 
-        public async Task<Author> GetById(Guid id)
+        public Task<Author> GetById(Guid id)
         {
-            return await Authors.Find(new BsonDocument("Id", id.ToByteArray())).FirstOrDefaultAsync();
+            return Authors.Find(new BsonDocument("Id", id.ToByteArray())).FirstOrDefaultAsync();
         }
     }
 }

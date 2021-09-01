@@ -7,7 +7,7 @@ namespace MessageApprover.Commands.DataAccess.Abstractions
 {
     public interface IAuthorDao
     {
-        Task<IReadOnlyList<Author>> GetAll();
+        Task<List<Author>> GetAll();
 
         Task<Author> GetById(Guid id);
 

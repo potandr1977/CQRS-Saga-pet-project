@@ -20,30 +20,30 @@ namespace MessageApprover.Commands.DataAccess
 
         private IMongoCollection<EnteredMessage> EnteredMessages => database.GetCollection<EnteredMessage>(MongoSettings.EnteredMessagesCollectionName);
 
-        public async Task<IReadOnlyList<EnteredMessage>> GetAll()
+        public Task<List<EnteredMessage>> GetAll()
         {
             var builder = new FilterDefinitionBuilder<EnteredMessage>();
             var filter = builder.Empty;
 
-            return await EnteredMessages.Find(filter).ToListAsync();
+            return EnteredMessages.Find(filter).ToListAsync();
         }
 
-        public async Task<IReadOnlyList<EnteredMessage>> GetByAuthorId(Guid authorId)
+        public Task<List<EnteredMessage>> GetByAuthorId(Guid authorId)
         {
             var builder = new FilterDefinitionBuilder<EnteredMessage>();
             var filter = builder.Empty;
 
-            return await EnteredMessages.Find(filter).ToListAsync();
+            return EnteredMessages.Find(filter).ToListAsync();
         }
 
-        public async Task<EnteredMessage> GetById(Guid id)
+        public  Task<EnteredMessage> GetById(Guid id)
         {
-            return await EnteredMessages.Find(new BsonDocument("Id", id.ToByteArray())).FirstOrDefaultAsync();
+            return EnteredMessages.Find(new BsonDocument("Id", id.ToByteArray())).FirstOrDefaultAsync();
         }
 
-        public async Task Save(EnteredMessage message)
+        public Task Save(EnteredMessage message)
         {
-            await EnteredMessages.InsertOneAsync(message);
+            return EnteredMessages.InsertOneAsync(message);
         }
     }
 }

@@ -7,9 +7,9 @@ namespace MessageApprover.Commands.DataAccess.Abstractions
 {
     public interface IEnteredMessageDao
     {
-        Task<IReadOnlyList<EnteredMessage>> GetAll();
+        Task<List<EnteredMessage>> GetAll();
 
-        Task<IReadOnlyList<EnteredMessage>> GetByAuthorId(Guid authorId);
+        Task<List<EnteredMessage>> GetByAuthorId(Guid authorId);
 
         Task<EnteredMessage> GetById(Guid id);
 
