@@ -1,7 +1,6 @@
 using MassTransit;
 using MessageApprover.Commands.DataAccess;
 using MessageApprover.Commands.DataAccess.Abstractions;
-using MessageApprover.Commands.infrastructure;
 using MessageApprover.Commands.Services;
 using MessageApprover.Commands.Services.Abstractions;
 using MessageApprover.Commands.Api.Consumers;
@@ -13,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using System.Reflection;
+using MediatR;
+using MessageApprover.Commands.handlers;
 
 namespace MessageApprover.Commands.Api
 {
@@ -28,8 +30,8 @@ namespace MessageApprover.Commands.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCommandHandlers();
-            
+            services.AddMediatR(Assembly.GetExecutingAssembly(),typeof(CreateAuthorCommandHandler).GetTypeInfo().Assembly);
+
             services.AddMassTransit(x =>
             {
                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
@@ -60,7 +62,7 @@ namespace MessageApprover.Commands.Api
             services.AddSingleton<IEnteredMessageDao, EnteredMessageDao>();
             services.AddSingleton<IAuthorCommandService, AuthorCommandService>();
             services.AddSingleton<IEnteredMessagesCommandService, EnteredMessagesCommandService>();
-
+           
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

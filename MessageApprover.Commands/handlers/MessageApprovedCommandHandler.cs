@@ -4,10 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using MessageApprover.Commands.Services.Abstractions;
 using MessageApprover.Commands.Abstractions.EnteredMessage;
+using MediatR;
 
 namespace MessageApprover.Commands.handlers
 {
-    public class MessageApprovedCommandHandler : ICommandHandler<MessageApprovedCommand>
+    public class MessageApprovedCommandHandler : IRequestHandler<MessageApprovedCommand, NullResponse>
     {
         private readonly IEnteredMessagesCommandService enteredMessagesCommandService;
 
@@ -16,11 +17,13 @@ namespace MessageApprover.Commands.handlers
             this.enteredMessagesCommandService = enteredMessagesCommandService;
         }
 
-        public Task Handle(MessageApprovedCommand command, CancellationToken cancellationToken)
+        public async Task<NullResponse> Handle(MessageApprovedCommand command, CancellationToken cancellationToken)
         {
             var message = command.ToDomain();
 
-            return enteredMessagesCommandService.SaveMessage(message);
+            await enteredMessagesCommandService.SaveMessage(message);
+
+            return new NullResponse();
         }
     }
 }

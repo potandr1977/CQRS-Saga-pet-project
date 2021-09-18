@@ -4,10 +4,11 @@ using System.Threading.Tasks;
 using MassTransit;
 using MessageApprover.Saga.Messages.EnteredMessages;
 using MessageApprover.Commands.Abstractions.EnteredMessage;
+using MediatR;
 
 namespace MessageApprover.Commands.handlers
 {
-    public class CreateEnteredMessageCommandHandler : ICommandHandler<CreateEnteredMessageCommand>
+    public class CreateEnteredMessageCommandHandler : IRequestHandler<CreateEnteredMessageCommand, NullResponse>
     {
         private readonly IBusControl busControl;
 
@@ -16,12 +17,12 @@ namespace MessageApprover.Commands.handlers
             this.busControl = busControl;
         }
 
-        public Task Handle(CreateEnteredMessageCommand command, CancellationToken cancellationToken)
+        public Task<NullResponse> Handle(CreateEnteredMessageCommand command, CancellationToken cancellationToken)
         {
             return SendSagaCommand(command);
         }
 
-        private async Task SendSagaCommand(CreateEnteredMessageCommand command)
+        private async Task<NullResponse> SendSagaCommand(CreateEnteredMessageCommand command)
         {
             /*
             var sendToUri = new Uri($"{RabbitSettings.RabbitMqUri}{RabbitSettings.SagaQueue}:{nameof(IStartApprovementCommand)}");
@@ -40,7 +41,8 @@ namespace MessageApprover.Commands.handlers
                 AuthorId = command.AuthorId,
                 Text = command.Text
             });
-            
+
+            return new NullResponse();
         }
     }
 }

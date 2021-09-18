@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using System;
 
 namespace MessageApprover.Commands.Abstractions.EnteredMessage
 {
-    public class CreateEnteredMessageCommand : ICommand
+    public class CreateEnteredMessageCommand : IRequest<NullResponse>
     {
         public Guid Id { get; set; }
 
@@ -15,7 +12,7 @@ namespace MessageApprover.Commands.Abstractions.EnteredMessage
         public string Text { get; set; }
     }
 
-    public class MessageApprovedCommand : ICommand
+    public class MessageApprovedCommand : IRequest<NullResponse>
     {
         public Guid Id { get; set; }
 

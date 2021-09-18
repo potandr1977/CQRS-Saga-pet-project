@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MassTransit.Mediator;
 using MessageApprover.Commands.Abstractions;
 using MessageApprover.Commands.Abstractions.EnteredMessage;
 using MessageApprover.Saga.Messages.EnteredMessages;
@@ -9,11 +10,11 @@ namespace MessageApprover.Commands.Api.Consumers
 {
     public class WaitForApproveConsumer : IConsumer<WaitingForApproveStarted>
     {
-        private readonly ICommandDispatcher commandDispatcher;
+        private readonly IMediator mediator;
 
         public WaitForApproveConsumer(IServiceCollection services)
         {
-            commandDispatcher = services.BuildServiceProvider().GetService<ICommandDispatcher>();
+            mediator = services.BuildServiceProvider().GetService<IMediator>();
         }
 
         public async Task Consume(ConsumeContext<WaitingForApproveStarted> context)
@@ -21,7 +22,7 @@ namespace MessageApprover.Commands.Api.Consumers
             //I wont to develop message approvement UI, that is why I'm going to save message text in mongoDB and 
             //publish saga message 
             
-            await commandDispatcher.Send(new MessageApprovedCommand
+            await mediator.Send(new MessageApprovedCommand
             {
                 Id = context.Message.Id,
                 AuthorId = context.Message.AuthorId,

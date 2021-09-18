@@ -1,4 +1,4 @@
-﻿using MessageApprover.Commands.Abstractions;
+﻿using MediatR;
 using MessageApprover.Commands.Abstractions.EnteredMessage;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,11 +12,11 @@ namespace MessageApprover.Commands.Api.Controllers
     [ApiController]
     public class EnteredValuesController : ControllerBase
     {
-        private readonly ICommandDispatcher commandDispatcher;
+        private readonly IMediator mediator;
 
-        public EnteredValuesController(ICommandDispatcher commandDispatcher)
+        public EnteredValuesController(IMediator mediator)
         {
-            this.commandDispatcher = commandDispatcher;
+            this.mediator = mediator;
         }
 
         // PUT api/<EnteredValuesController>/5
@@ -31,7 +31,7 @@ namespace MessageApprover.Commands.Api.Controllers
                 Text = messageToCreate
             };
 
-            await commandDispatcher.Send(createEnteredMessageCommand);
+            await mediator.Send(createEnteredMessageCommand);
 
             return id.ToString();
         }

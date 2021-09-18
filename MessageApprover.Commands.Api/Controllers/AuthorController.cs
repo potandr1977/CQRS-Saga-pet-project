@@ -1,4 +1,4 @@
-﻿using MessageApprover.Commands.Abstractions;
+﻿using MediatR;
 using MessageApprover.CommandsAbstractions.Author;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,11 +12,11 @@ namespace MessageApprover.Commands.Api.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private readonly ICommandDispatcher commandDispatcher;
+        private readonly IMediator mediator;
 
-        public AuthorController(ICommandDispatcher commandDispatcher)
+        public AuthorController(IMediator mediator)
         {
-            this.commandDispatcher = commandDispatcher;
+            this.mediator = mediator;
         }
 
         // POST api/<AuthorController>
@@ -30,7 +30,7 @@ namespace MessageApprover.Commands.Api.Controllers
                 Name = authorNameToCreate
             };
 
-            await commandDispatcher.Send(createAuthorCommand);
+            await mediator.Send(createAuthorCommand);
 
             return id.ToString();
         }

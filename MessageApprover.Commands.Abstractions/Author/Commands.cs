@@ -1,9 +1,10 @@
-﻿using MessageApprover.Commands.Abstractions;
+﻿using MediatR;
+using MessageApprover.Commands.Abstractions;
 using System;
 
 namespace MessageApprover.CommandsAbstractions.Author
 {
-    public class CreateAuthorCommand : ICommand 
+    public class CreateAuthorCommand : IRequest<NullResponse>
     {
         public Guid Id { get; set; }
 
