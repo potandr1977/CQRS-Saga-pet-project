@@ -35,7 +35,7 @@ namespace MessageApprover.Commands.handlers
             });
             */
             
-            await busControl.Publish<IStartApprovementCommand>(new
+            await busControl.Send<IStartApprovementCommand>(new
             {
                 Id = command.Id,
                 AuthorId = command.AuthorId,

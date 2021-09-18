@@ -1,8 +1,6 @@
 ﻿using MessageApprover.Data.Elastic;
 using MessageApprover.Queries.DataAccess.Elastic.Abstractions;
-using MessageApprover.Settings;
 using Nest;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -1,6 +1,5 @@
 ﻿using MassTransit;
-using MassTransit.Mediator;
-using MessageApprover.Commands.Abstractions;
+using MediatR;
 using MessageApprover.Commands.Abstractions.EnteredMessage;
 using MessageApprover.Saga.Messages.EnteredMessages;
 using Microsoft.Extensions.DependencyInjection;
