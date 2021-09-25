@@ -20,6 +20,11 @@ namespace MessageApprover.Commands.handlers
 
         public async Task<NullResponse> Handle(CreateAuthorCommand command, CancellationToken cancellationToken)
         {
+            if (command is null)
+            {
+                throw new System.ArgumentNullException(nameof(command));
+            }
+
             var author = command.ToDomain();
 
             await authorCommandService.Save(author);

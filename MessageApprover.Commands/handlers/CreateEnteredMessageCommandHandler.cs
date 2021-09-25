@@ -24,6 +24,10 @@ namespace MessageApprover.Commands.handlers
 
         private async Task<NullResponse> SendSagaCommand(CreateEnteredMessageCommand command)
         {
+            if (command is null)
+            {
+                throw new System.ArgumentNullException(nameof(command));
+            }
             /*
             var sendToUri = new Uri($"{RabbitSettings.RabbitMqUri}{RabbitSettings.SagaQueue}:{nameof(IStartApprovementCommand)}");
             var endPoint = await busControl.GetSendEndpoint(sendToUri);
@@ -34,12 +38,12 @@ namespace MessageApprover.Commands.handlers
                 Text = command.Text
             });
             */
-            
-            await busControl.Send<IStartApprovementCommand>(new
+
+            await busControl.Publish<IStartApprovementCommand>(new
             {
-                Id = command.Id,
-                AuthorId = command.AuthorId,
-                Text = command.Text
+                command.Id,
+                command.AuthorId,
+                command.Text
             });
 
             return new NullResponse();

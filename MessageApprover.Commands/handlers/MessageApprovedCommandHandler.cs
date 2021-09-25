@@ -19,6 +19,11 @@ namespace MessageApprover.Commands.handlers
 
         public async Task<NullResponse> Handle(MessageApprovedCommand command, CancellationToken cancellationToken)
         {
+            if (command is null)
+            {
+                throw new System.ArgumentNullException(nameof(command));
+            }
+
             var message = command.ToDomain();
 
             await enteredMessagesCommandService.SaveMessage(message);

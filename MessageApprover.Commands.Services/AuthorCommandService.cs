@@ -16,6 +16,11 @@ namespace MessageApprover.Commands.Services
 
         public Task Save(Author author)
         {
+            if (author is null)
+            {
+                throw new System.ArgumentNullException(nameof(author));
+            }
+
             return authorDao.Save(author);
         }
     }

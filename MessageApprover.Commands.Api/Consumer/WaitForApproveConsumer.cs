@@ -16,20 +16,16 @@ namespace MessageApprover.Commands.Api.Consumers
             mediator = services.BuildServiceProvider().GetService<IMediator>();
         }
 
-        public async Task Consume(ConsumeContext<WaitingForApproveStarted> context)
+        public Task Consume(ConsumeContext<WaitingForApproveStarted> context)
         {
+            if (context is null)
+            {
+                throw new System.ArgumentNullException(nameof(context));
+            }
             //I wont to develop message approvement UI, that is why I'm going to save message text in mongoDB and 
             //publish saga message 
-            
-            await mediator.Send(new MessageApprovedCommand
-            {
-                Id = context.Message.Id,
-                AuthorId = context.Message.AuthorId,
-                Text = context.Message.Text
-            });
-            
 
-            await context.Publish<IMessageApproved>(new  
+            var messageTask = context.Publish<IMessageApproved>(new
             {
                 CorrelationId = context.Message.CorrelationId,
                 Id = context.Message.Id,
@@ -37,6 +33,16 @@ namespace MessageApprover.Commands.Api.Consumers
                 Text = context.Message.Text
             });
 
+
+            var saveTask =  mediator.Send(new MessageApprovedCommand
+            {
+                Id = context.Message.Id,
+                AuthorId = context.Message.AuthorId,
+                Text = context.Message.Text
+            });
+
+            return Task.WhenAll(messageTask,saveTask);
+            
             //return context.Publish<IMessageDeclined>(context.Message);
         }
     }

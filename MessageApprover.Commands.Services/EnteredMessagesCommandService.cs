@@ -20,13 +20,18 @@ namespace MessageApprover.Commands.Services
 
         public async Task SaveMessage(EnteredMessage message)
         {
+            if (message is null)
+            {
+                throw new System.ArgumentNullException(nameof(message));
+            }
+
             await enteredMessageDao.Save(message);
 
             await busControl.Publish<IMessageReadyForProjection>(new
             {
-                Id = message.Id,
-                AuthorId = message.AuthorId,
-                Text = message.Text
+                message.Id,
+                message.AuthorId,
+                message.Text
             });
         }
     }
