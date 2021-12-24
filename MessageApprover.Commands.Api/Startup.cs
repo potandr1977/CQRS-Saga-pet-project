@@ -30,7 +30,8 @@ namespace MessageApprover.Commands.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly(),typeof(CreateAuthorCommandHandler).GetTypeInfo().Assembly);
+            var handlersAssembly = typeof(CreateAuthorCommandHandler).GetTypeInfo().Assembly;
+            services.AddMediatR(Assembly.GetExecutingAssembly(),handlersAssembly);
 
             services.AddMassTransit(x =>
             {

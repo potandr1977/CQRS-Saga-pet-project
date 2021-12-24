@@ -15,9 +15,7 @@ namespace MessageApprover.Consumers
             authorMessageProjector = services.BuildServiceProvider().GetService<IAuthorMessagesProjector>();
         }
 
-        public Task Consume(ConsumeContext<IMessageReadyForProjection> context)
-        {
-            return authorMessageProjector.Project(context.Message);
-        }
+        public Task Consume(ConsumeContext<IMessageReadyForProjection> context) => 
+            authorMessageProjector.Project(context.Message);
     }
 }
